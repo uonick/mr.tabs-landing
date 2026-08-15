@@ -32,7 +32,3 @@ PNG в `public/images/` (пары light/dark, выбор по `prefers-color-sch
 | `/privacy/` | Конфиденциальность |
 
 Поддержка ведёт на `supportUrl` (сейчас uonick.com).
-
-## SEO
-
-Артефакты: `SEO-AUDIT.md`, `SEO-FIX-PLAN.md`, `SEO-VERIFY.md`, `SEO-GOOGLE.md`.
