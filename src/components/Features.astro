@@ -1,0 +1,95 @@
+---
+import Screenshot from '@/components/Screenshot.astro'
+
+type Feature = {
+  title: string
+  text: string
+  span: string
+  alt?: string
+  lightSrc?: string
+  darkSrc?: string
+  width?: number
+  height?: number
+}
+
+const features: Feature[] = [
+  {
+    title: 'Сетка под себя',
+    text: 'Иконок в ряд, ряды, размер, отступы, подписи.',
+    lightSrc: '/images/grid-light.png',
+    darkSrc: '/images/grid-dark.png',
+    alt: 'Настройки сетки приложений в mr.tabs',
+    width: 2024,
+    height: 1568,
+    span: 'md:col-span-3',
+  },
+  {
+    title: 'Свои хоткеи',
+    text: 'По умолчанию ⌘Tab. Можно назначить другое сочетание.',
+    lightSrc: '/images/hotkeys-light.png',
+    darkSrc: '/images/hotkeys-dark.png',
+    alt: 'Настройка горячих клавиш в mr.tabs',
+    width: 2024,
+    height: 1568,
+    span: 'md:col-span-3',
+  },
+  {
+    title: 'Перехват ⌘Tab',
+    text: 'Жест как в системе. Вид другой: сетка, не полоска.',
+    span: 'md:col-span-2',
+  },
+  {
+    title: 'Настройки в одном окне',
+    text: 'Автозапуск, меню-бар, сетка и хоткеи без лишних экранов.',
+    span: 'md:col-span-2',
+  },
+  {
+    title: 'Локально',
+    text: 'Без аккаунта и облака. Нужен только Accessibility.',
+    span: 'md:col-span-2',
+  },
+]
+---
+
+<section class="cv-auto mt-16 px-4 md:mt-20 lg:mt-28">
+  <h2 class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-white lg:text-[28px]">
+    Привычный ⌘Tab.<br class="hidden sm:block" /> Вид, в котором ничего не прячется.
+  </h2>
+  <p class="mt-4 max-w-2xl text-sm text-pretty text-mute lg:text-base">
+    Открыл, увидел, переключился. Сетка, хоткеи и настройки под свой ритм.
+  </p>
+
+  <div class="relative mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/5 md:grid-cols-6">
+    {
+      features.map((feature) => {
+        const hasImage = Boolean(feature.lightSrc && feature.darkSrc)
+        return (
+          <article
+            class:list={[
+              'flex flex-col bg-panel p-4',
+              hasImage ? 'min-h-72 md:min-h-96' : 'min-h-40 justify-end',
+              feature.span,
+            ]}
+          >
+            {hasImage && (
+              <div class="flex flex-1 items-center justify-center overflow-hidden py-6 md:py-0">
+                <Screenshot
+                  lightSrc={feature.lightSrc}
+                  darkSrc={feature.darkSrc}
+                  alt={feature.alt ?? ''}
+                  width={feature.width}
+                  height={feature.height}
+                  class="max-h-full max-w-[30rem] object-contain"
+                />
+              </div>
+            )}
+            <div>
+              <h3 class="text-base font-medium tracking-tight text-white">{feature.title}</h3>
+              <p class="mt-0.5 text-sm leading-5 text-balance text-mute">{feature.text}</p>
+            </div>
+          </article>
+        )
+      })
+    }
+  </div>
+</section>

@@ -1,0 +1,83 @@
+---
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+
+type Props = {
+  src?: string
+  lightSrc?: string
+  darkSrc?: string
+  alt: string
+  class?: string
+  loading?: 'eager' | 'lazy'
+  fetchpriority?: 'high' | 'low' | 'auto'
+  width?: number
+  height?: number
+}
+
+const {
+  src,
+  lightSrc,
+  darkSrc,
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  width,
+  height,
+} = Astro.props
+
+const resolvePath = (path: string): string => join(process.cwd(), 'public', path.replace(/^\//, ''))
+const exists = (path: string | undefined): path is string => Boolean(path && existsSync(resolvePath(path)))
+
+const darkPath = darkSrc ?? src
+const lightPath = lightSrc
+const hasDark = exists(darkPath)
+const hasLight = exists(lightPath)
+const fallbackPath = hasDark ? darkPath : hasLight ? lightPath : undefined
+const imageClass = ['h-auto w-full bg-transparent object-contain', className]
+---
+
+{
+  fallbackPath ? (
+    hasLight && hasDark ? (
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset={lightPath} />
+        <source media="(prefers-color-scheme: dark)" srcset={darkPath} />
+        <img
+          src={fallbackPath}
+          alt={alt}
+          width={width}
+          height={height}
+          draggable="false"
+          loading={loading}
+          fetchpriority={fetchpriority}
+          decoding="async"
+          class:list={imageClass}
+        />
+      </picture>
+    ) : (
+      <img
+        src={fallbackPath}
+        alt={alt}
+        width={width}
+        height={height}
+        draggable="false"
+        loading={loading}
+        fetchpriority={fetchpriority}
+        decoding="async"
+        class:list={imageClass}
+      />
+    )
+  ) : (
+    <div
+      class:list={[
+        'flex aspect-[16/10] w-full items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/[0.02]',
+        className,
+      ]}
+      role="img"
+      aria-label={alt}
+    >
+      <span class="text-xs text-mute">{lightSrc ?? darkSrc ?? src}</span>
+    </div>
+  )
+}

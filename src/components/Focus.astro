@@ -1,0 +1,25 @@
+---
+import Screenshot from '@/components/Screenshot.astro'
+---
+
+<section class="cv-auto mt-16 px-4 md:mt-20 lg:mt-28">
+  <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+    <div>
+      <h2 class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-white lg:text-[28px]">
+        Светлая и тёмная. Как в системе.
+      </h2>
+      <p class="mt-4 text-sm text-pretty text-mute lg:text-base">
+        Окно настроек подстраивается под тему macOS. Accessibility, сетка, хоткеи - всё на месте,
+        без лишнего шума.
+      </p>
+    </div>
+    <Screenshot
+      lightSrc="/images/settings-light.png"
+      darkSrc="/images/settings-dark.png"
+      alt="Окно настроек mr.tabs в теме системы"
+      width={2024}
+      height={1568}
+      class="w-full"
+    />
+  </div>
+</section>

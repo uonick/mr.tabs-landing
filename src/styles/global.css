@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Syne', ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: #111111;
+  --color-panel: #0f0f0f;
+  --color-ink: #fafafa;
+  --color-mute: #a3a3a3;
+  --color-line: rgb(255 255 255 / 0.06);
+  --color-brand: #7c5cfa;
+  --color-brand-soft: #9b82ff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-brand) 40%, transparent);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .atmosphere {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgb(124 92 250 / 0.18), transparent 55%),
+      radial-gradient(ellipse 45% 35% at 90% 10%, rgb(56 189 248 / 0.08), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 10% 40%, rgb(124 92 250 / 0.06), transparent 45%),
+      var(--color-canvas);
+  }
+
+  .animate-rise {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-rise-delay {
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .animate-rise-late {
+    animation: rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+  }
+
+  .animate-float {
+    animation: float 7s ease-in-out infinite;
+  }
+
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-late,
+  .animate-float {
+    animation: none;
+  }
+}

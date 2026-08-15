@@ -1,0 +1,110 @@
+---
+import '@/styles/global.css'
+import { siteConfig } from '@/config/site'
+
+type Props = {
+  title?: string
+  description?: string
+  ogType?: 'website' | 'article'
+}
+
+const {
+  title = `${siteConfig.name} для macOS: ⌘Tab с сеткой приложений`,
+  description = siteConfig.description,
+  ogType = 'website',
+} = Astro.props
+
+const site = Astro.site ?? new URL(siteConfig.siteUrl)
+const canonical = new URL(Astro.url.pathname, site).href
+const ogImage = new URL('/app-icon.png', site).href
+const logoUrl = ogImage
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.siteUrl}/#website`,
+      url: `${siteConfig.siteUrl}/`,
+      name: siteConfig.name,
+      description: siteConfig.description,
+      inLanguage: 'ru',
+      publisher: { '@id': `${siteConfig.siteUrl}/#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteConfig.siteUrl}/#organization`,
+      name: siteConfig.author,
+      url: siteConfig.authorUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: logoUrl,
+        width: 512,
+        height: 512,
+      },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${siteConfig.siteUrl}/#app`,
+      name: siteConfig.name,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'macOS',
+      description: siteConfig.description,
+      url: `${siteConfig.siteUrl}/`,
+      image: logoUrl,
+      downloadUrl: siteConfig.appStoreUrl,
+      offers: {
+        '@type': 'Offer',
+        url: siteConfig.appStoreUrl,
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+      publisher: { '@id': `${siteConfig.siteUrl}/#organization` },
+    },
+  ],
+}
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content={siteConfig.author} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/app-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..700;1,400..700&family=Syne:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#111111" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content={`Иконка ${siteConfig.name}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`Иконка ${siteConfig.name}`} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="atmosphere antialiased">
+    <div class="mx-auto w-full max-w-6xl">
+      <slot />
+    </div>
+  </body>
+</html>
