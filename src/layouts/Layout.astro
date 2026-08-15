@@ -16,7 +16,7 @@ const {
 
 const site = Astro.site ?? new URL(siteConfig.siteUrl)
 const canonical = new URL(Astro.url.pathname, site).href
-const ogImage = new URL('/app-icon.png', site).href
+const ogImage = new URL('/brand/icon.png', site).href
 const logoUrl = ogImage
 
 const jsonLd = {
@@ -78,7 +78,7 @@ const jsonLd = {
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/app-icon.png" />
+    <link rel="apple-touch-icon" href="/brand/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
