@@ -16,12 +16,12 @@ import { siteConfig } from '@/config/site'
     lead={`${siteConfig.name} остаётся на твоём Mac. Никаких аккаунтов, трекеров и «улучшения продукта» за счёт твоих данных.`}
   >
     <section>
-      <h2>Что собираем</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Что собираем</h2>
       <p>Ничего. Нет аналитики, crash-репортов в облако, рекламных SDK и аккаунтов.</p>
     </section>
 
     <section>
-      <h2>Что хранится на устройстве</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Что хранится на устройстве</h2>
       <p>
         Локально сохраняются только настройки: сетка, хоткеи, автозапуск, иконка в меню-баре.
         Список открытых приложений не пишется на диск ради «истории» и никуда не отправляется.
@@ -29,28 +29,28 @@ import { siteConfig } from '@/config/site'
     </section>
 
     <section>
-      <h2>Accessibility</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Accessibility</h2>
       <p>
         macOS просит доступ Accessibility, чтобы приложение могло перехватить ⌘Tab и
         активировать выбранное приложение. Это системный API на этом компьютере, не канал для выгрузки данных.
       </p>
-      <p>
+      <p class="mt-3">
         Доступ можно отозвать в любой момент: Системные настройки → Privacy & Security → Accessibility.
       </p>
     </section>
 
     <section>
-      <h2>Цена</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Цена</h2>
       <p>
         {siteConfig.name} полностью бесплатный. Без подписок, пробных периодов и скрытых платежей.
       </p>
     </section>
 
     <section>
-      <h2>Контакты</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Контакты</h2>
       <p>
-        Вопросы по данным: <a href={siteConfig.supportUrl}>написать</a>.
-        Как пользоваться приложением: <a href={siteConfig.paths.documentation}>документация</a>.
+        Вопросы по данным: <a class="text-brand-soft underline-offset-2 hover:underline" href={siteConfig.supportUrl}>написать</a>.
+        Как пользоваться приложением: <a class="text-brand-soft underline-offset-2 hover:underline" href={siteConfig.paths.documentation}>документация</a>.
       </p>
     </section>
   </ContentPage>

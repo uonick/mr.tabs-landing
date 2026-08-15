@@ -15,103 +15,115 @@ import { siteConfig } from '@/config/site'
     title="Документация"
     lead="Коротко: разреши Accessibility, жми привычный ⌘Tab, целишься по сетке. Ниже - разбор настроек."
   >
-    <nav class="toc" aria-label="Содержание">
-      <a href="#start">Старт</a>
-      <a href="#accessibility">Accessibility</a>
-      <a href="#switcher">Переключение</a>
-      <a href="#grid">Сетка</a>
-      <a href="#hotkeys">Горячие клавиши</a>
-      <a href="#launch">Автозапуск и меню</a>
-      <a href="#privacy">Данные</a>
-      <a href="#help">Если что-то не так</a>
+    <nav class="rounded-2xl border border-line bg-white/2 px-4 py-4" aria-label="Содержание">
+      <a class="block py-0.5 text-mute hover:text-ink" href="#start">Старт</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#accessibility">Accessibility</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#switcher">Переключение</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#grid">Сетка</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#hotkeys">Горячие клавиши</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#launch">Автозапуск и меню</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#privacy">Данные</a>
+      <a class="block py-0.5 text-mute hover:text-ink" href="#help">Если что-то не так</a>
     </nav>
 
     <section id="start">
-      <h2>Старт</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Старт</h2>
       <p>
         {siteConfig.name} сидит в фоне и перехватывает системный ⌘Tab. Вместо полоски из пары иконок
         ты видишь сетку запущенных приложений.
       </p>
-      <ul>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Установи приложение из App Store.</li>
         <li>Открой {siteConfig.name} и разреши Accessibility.</li>
-        <li>Нажми <kbd>⌘</kbd> <kbd>Tab</kbd> и проверь, что сетка появилась.</li>
+        <li>
+          Нажми
+          <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
+          <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>
+          и проверь, что сетка появилась.
+        </li>
       </ul>
     </section>
 
     <section id="accessibility">
-      <h2>Accessibility</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Accessibility</h2>
       <p>
         Без Accessibility перехват ⌘Tab не работает. Доступ нужен только для переключения
         приложений на этом Mac. В облако ничего не уезжает.
       </p>
-      <p>
+      <p class="mt-3">
         В окне настроек будет карточка с доступом. Нажми «Разрешить» или открой системные
         настройки Privacy & Security → Accessibility и включи {siteConfig.name} в списке.
       </p>
-      <p>
-        Если после обновления macOS жест снова «молчит», зайди в ту же панель и перевключи
+      <p class="mt-3">
+        Если после обновления macOS жест снова «молчит», зайди в ту же панель и переключи
         галочку у приложения.
       </p>
     </section>
 
     <section id="switcher">
-      <h2>Переключение</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Переключение</h2>
       <p>
-        Удерживай <kbd>⌘</kbd> и жми <kbd>Tab</kbd>: выбор бежит по сетке. Стрелки тоже
-        работают. Отпусти ⌘ - выбранное приложение выйдет вперёд.
+        Удерживай
+        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
+        и жми
+        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>:
+        выбор бежит по сетке. Стрелки тоже работают. Отпусти ⌘ - выбранное приложение выйдет вперёд.
       </p>
-      <p>
+      <p class="mt-3">
         Можно кликнуть по иконке мышкой. Наведение подсвечивает ячейку, клик активирует.
       </p>
-      <p>
+      <p class="mt-3">
         Список строится из запущенных приложений. Закрыл процесс - он пропадает из сетки.
       </p>
     </section>
 
     <section id="grid">
-      <h2>Сетка</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Сетка</h2>
       <p>
         В настройках открой блок «Сетка приложений». Там живой превью: крутишь параметры,
         сетка рядом меняется.
       </p>
-      <h3>Размер сетки</h3>
-      <ul>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Размер сетки</h3>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Иконок в ряд: от 3 до 12.</li>
         <li>Максимум рядов: от 1 до 12.</li>
       </ul>
-      <p>
+      <p class="mt-3">
         Чем больше приложений открыто, тем сильнее чувствуется разница между «полоской»
         и нормальной сеткой.
       </p>
-      <h3>Иконки и отступы</h3>
-      <ul>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Иконки и отступы</h3>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Размер иконок: слайдер от S до XL.</li>
         <li>Отступы между ячейками: от плотнее к свободнее.</li>
       </ul>
-      <h3>Дополнительно</h3>
-      <ul>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Дополнительно</h3>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Показывать иконки приложений. Выключишь - останутся только окна-плейсхолдеры.</li>
-        <li>Показывать названия. Подписи под иконками; если выключено, имя выбранного
-          приложения видно снизу панели.</li>
+        <li>
+          Показывать названия. Подписи под иконками; если выключено, имя выбранного
+          приложения видно снизу панели.
+        </li>
       </ul>
     </section>
 
     <section id="hotkeys">
-      <h2>Горячие клавиши</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Горячие клавиши</h2>
       <p>
-        По умолчанию это <kbd>⌘</kbd> <kbd>Tab</kbd>. Хочешь другое сочетание - открой
-        «Горячие клавиши», кликни в поле и нажми своё.
+        По умолчанию это
+        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
+        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>.
+        Хочешь другое сочетание - открой «Горячие клавиши», кликни в поле и нажми своё.
       </p>
-      <p>
+      <p class="mt-3">
         Потом «Назначить». Не подошло: сброс вернёт ⌘Tab. Пока идёт запись сочетания,
         глобальный перехват на секунду встаёт на паузу, чтобы не мешать.
       </p>
     </section>
 
     <section id="launch">
-      <h2>Автозапуск и меню</h2>
-      <ul>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Автозапуск и меню</h2>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Автозапуск: поднимать {siteConfig.name} вместе с системой.</li>
         <li>Запуск свёрнутым: без окна настроек при старте, только фон и перехват.</li>
         <li>Иконка в меню-баре: быстрый доступ к настройкам, когда окна нет.</li>
@@ -119,22 +131,22 @@ import { siteConfig } from '@/config/site'
     </section>
 
     <section id="privacy">
-      <h2>Данные</h2>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Данные</h2>
       <p>
         Нет аккаунта, нет аналитики, нет выгрузки вкладок и списка приложений на сервер.
-        Подробности: <a href={siteConfig.paths.privacy}>конфиденциальность</a>.
+        Подробности: <a class="text-brand-soft underline-offset-2 hover:underline" href={siteConfig.paths.privacy}>конфиденциальность</a>.
       </p>
     </section>
 
     <section id="help">
-      <h2>Если что-то не так</h2>
-      <ul>
+      <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Если что-то не так</h2>
+      <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>⌘Tab открывает системную полоску: проверь Accessibility и что {siteConfig.name} запущен.</li>
         <li>Сетка пустая: нет активных приложений в списке или процесс не виден системе.</li>
         <li>Новый хоткей не срабатывает: убедись, что сочетание не занято другим ПО.</li>
       </ul>
-      <p>
-        Не помогло: <a href={siteConfig.supportUrl}>напиши в поддержку</a>.
+      <p class="mt-3">
+        Не помогло: <a class="text-brand-soft underline-offset-2 hover:underline" href={siteConfig.supportUrl}>напиши в поддержку</a>.
       </p>
     </section>
   </ContentPage>
