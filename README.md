@@ -11,10 +11,3 @@
 Сайт: [mrtabs.ru](https://mrtabs.ru)  
 App Store: [скачать](https://apps.apple.com/us/app/mr-tabs/id6801542683)
 
-## Deploy
-
-GitHub Pages: push в `main` → Actions → Deploy to GitHub Pages.
-
-В репозитории: **Settings → Pages → Source: GitHub Actions**.  
-DNS для `mrtabs.ru`: CNAME на `uonick.github.io`.
-
