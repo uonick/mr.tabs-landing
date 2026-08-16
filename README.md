@@ -1,8 +1,6 @@
-# mr.tabs landing
+# mr.tabs 
 
-Лендинг для [mr.tabs](https://mrtabs.ru).
-
-Бесплатный ⌘Tab для macOS: вместо полоски приложений - сетка. Увидел нужное, переключился.
+Бесплатный ⌘Tab для macOS.
 
 <p align="center">
   <img src="public/screenshots/settings/light.png" alt="mr.tabs, светлая тема" width="880" />
