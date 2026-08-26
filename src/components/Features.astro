@@ -1,94 +1,93 @@
 ---
-import Screenshot from '@/components/Screenshot.astro'
+import Screenshot from "@/components/Screenshot.astro";
+import type { ScreenshotName } from "@/assets/screenshots";
 
 type Feature = {
-  title: string
-  text: string
-  span: string
-  alt?: string
-  lightSrc?: string
-  darkSrc?: string
-  width?: number
-  height?: number
-}
+  title: string;
+  text: string;
+  span: string;
+  screenshot?: ScreenshotName;
+  alt?: string;
+};
 
 const features: Feature[] = [
   {
-    title: 'Настрой внешний вид',
-    text: 'Иконки, ряды, отступы, подписи. Сетка под твой экран и привычки.',
-    lightSrc: '/screenshots/grid/light.png',
-    darkSrc: '/screenshots/grid/dark.png',
-    alt: 'Настройки сетки приложений в mr.tabs',
-    width: 2024,
-    height: 1568,
-    span: 'md:col-span-3',
+    title: "Сетка",
+    text: "Полностью настраивамая сетка, размер и количество ярдов отображаемых приложений.",
+    screenshot: "grid",
+    alt: "Настройки сетки приложений",
+    span: "md:col-span-3",
   },
   {
-    title: 'Свои шорткаты',
-    text: 'По умолчанию ⌘Tab. Хочешь другое сочетание - назначь за пару кликов.',
-    lightSrc: '/screenshots/hotkeys/light.png',
-    darkSrc: '/screenshots/hotkeys/dark.png',
-    alt: 'Настройка горячих клавиш в mr.tabs',
-    width: 2024,
-    height: 1568,
-    span: 'md:col-span-3',
+    title: "Хоткей",
+    text: "По умолчанию тот же ⌘Tab. Хочешь другое сочетание - настрой сам любое",
+    screenshot: "hotkeys",
+    alt: "Настройка горячих клавиш",
+    span: "md:col-span-3",
   },
   {
-    title: 'Перехват ⌘Tab',
-    text: 'Знакомый жест. Вместо полоски - сетка всех запущенных приложений.',
-    span: 'md:col-span-2',
+    title: "Приложения, не окна",
+    text: "Одна иконка на приложение. Отпустил клавишу, окно откроется без доп движений",
+    span: "md:col-span-2",
   },
   {
-    title: 'Всё в одном окне',
-    text: 'Автозапуск, меню-бар, сетка и хоткеи. Без лишних экранов.',
-    span: 'md:col-span-2',
+    title: "Фоновая работа",
+    text: "Приложение умеет автозапускаться и не показыватся. Но если нужно, есть иконка.",
+    span: "md:col-span-2",
   },
   {
-    title: 'Бесплатно и локально',
-    text: 'Без подписок и аккаунтов. Нужен только Accessibility.',
-    span: 'md:col-span-2',
+    title: "Ничего не шлёт",
+    text: "Без аккаунта, оплаты, подписок и аналитики. Нужен Accessibility.",
+    span: "md:col-span-2",
   },
-]
+];
 ---
 
 <section class="cv-auto mt-16 px-4 md:mt-20 lg:mt-28">
-  <h2 class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-white lg:text-[28px]">
-    Привычный ⌘Tab.<br class="hidden sm:block" /> Сетка, в которой ничего не теряется.
+  <h2
+    class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-ink lg:text-[28px]"
+  >
+    Замена системного переключателя<br class="hidden sm:block" /> Просто работает
+    и не требует лишних настроек
   </h2>
   <p class="mt-4 max-w-2xl text-sm text-pretty text-mute lg:text-base">
-    Увидел нужное приложение - переключился. Внешний вид и шорткаты настраиваешь сам.
+    Стандартный переключатель macOS глючный и исправлять это никто не собирается
   </p>
 
-  <div class="relative mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-white/5 md:grid-cols-6">
+  <div
+    class="relative mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-line md:grid-cols-6"
+  >
     {
       features.map((feature) => {
-        const hasImage = Boolean(feature.lightSrc && feature.darkSrc)
+        const hasImage = Boolean(feature.screenshot);
         return (
           <article
             class:list={[
-              'flex flex-col bg-panel p-4',
-              hasImage ? 'min-h-72 md:min-h-96' : 'min-h-40 justify-end',
+              "flex flex-col bg-panel p-4",
+              hasImage ? "min-h-72 md:min-h-96" : "min-h-40 justify-end",
               feature.span,
             ]}
           >
-            {hasImage && (
+            {feature.screenshot && (
               <div class="flex flex-1 items-center justify-center overflow-hidden py-6 md:py-0">
                 <Screenshot
-                  lightSrc={feature.lightSrc}
-                  darkSrc={feature.darkSrc}
-                  alt={feature.alt ?? ''}
-                  width={feature.width}
-                  height={feature.height}
+                  name={feature.screenshot}
+                  alt={feature.alt ?? ""}
+                  sizes="(min-width: 768px) 30rem, 92vw"
                   class="max-h-full max-w-120 object-contain"
                 />
               </div>
             )}
             <div>
-              <h3 class="text-base font-medium tracking-tight text-white">{feature.title}</h3>
-              <p class="mt-0.5 text-sm leading-5 text-balance text-mute">{feature.text}</p>
+              <h3 class="text-base font-medium tracking-tight text-ink">
+                {feature.title}
+              </h3>
+              <p class="mt-0.5 text-sm leading-5 text-balance text-mute">
+                {feature.text}
+              </p>
             </div>
           </article>
-        )
+        );
       })
     }
   </div>

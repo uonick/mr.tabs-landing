@@ -4,37 +4,34 @@ import AppleIcon from '@/components/AppleIcon.astro'
 import Screenshot from '@/components/Screenshot.astro'
 ---
 
-<section class="px-4">
-  <p class="animate-rise font-display mt-14 text-sm font-semibold tracking-tight text-brand-soft sm:mt-16">
-    {siteConfig.name}
-  </p>
+<section class="flex flex-col items-center px-4 text-center">
   <h1
-    class="animate-rise-delay font-display mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-balance text-white lg:text-4xl"
+    class="animate-rise font-display mt-14 max-w-3xl text-3xl font-semibold tracking-tight text-balance text-ink sm:mt-16 lg:text-4xl"
   >
-    Видишь все приложения.<br class="hidden sm:block" /> Переключаешься сразу.
+    {siteConfig.headline[0]}
+    <br class="hidden sm:block" />
+    {siteConfig.headline[1]}
   </h1>
   <p class="animate-rise-late mt-4 max-w-2xl text-base text-balance text-mute lg:text-lg">
-    {siteConfig.description}
+    {siteConfig.lead}
   </p>
   <a
     href={siteConfig.appStoreUrl}
-    class="animate-rise-late mt-8 inline-flex h-12 w-fit items-center gap-2 rounded-full bg-neutral-200 px-6 text-base font-semibold text-neutral-950 transition-colors hover:bg-neutral-100 sm:h-14 sm:px-7 sm:text-lg"
+    class="animate-rise-late mt-8 inline-flex h-12 w-fit items-center gap-2 rounded-full bg-cta px-6 text-base font-semibold text-cta-ink transition-colors hover:bg-cta-hover sm:h-14 sm:px-7 sm:text-lg"
   >
     <AppleIcon />
     Скачать бесплатно
   </a>
 
-  <div class="animate-float mt-9">
+  <div class="animate-float mt-12 w-full max-w-2xl px-2 sm:mt-14 sm:max-w-3xl sm:px-4">
     <Screenshot
-      lightSrc="/screenshots/settings/light.png"
-      darkSrc="/screenshots/settings/dark.png"
-      alt="Окно настроек mr.tabs: Accessibility, сетка и ⌘Tab"
+      name="grid"
+      alt="Сетка запущенных приложений в mr.tabs вместо системной полоски ⌘Tab"
       loading="eager"
       fetchpriority="high"
-      width={2024}
-      height={1568}
+      sizes="(min-width: 640px) 48rem, 92vw"
       class="w-full"
     />
   </div>
-  <p class="mx-2 mt-2 text-xs text-mute">macOS · полностью бесплатно · без аккаунта</p>
+  <p class="mt-3 text-xs text-mute">macOS · бесплатно · без аккаунта</p>
 </section>

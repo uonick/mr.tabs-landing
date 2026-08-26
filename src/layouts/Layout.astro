@@ -1,4 +1,5 @@
 ---
+import { Font } from 'astro:assets'
 import '@/styles/global.css'
 import { siteConfig } from '@/config/site'
 
@@ -9,7 +10,7 @@ type Props = {
 }
 
 const {
-  title = `${siteConfig.name} для macOS: ⌘Tab с сеткой приложений, бесплатно`,
+  title = `${siteConfig.name} · ${siteConfig.tagline}`,
   description = siteConfig.description,
   ogType = 'website',
 } = Astro.props
@@ -42,6 +43,7 @@ const jsonLd = {
         width: 512,
         height: 512,
       },
+      sameAs: [siteConfig.appStoreUrl, siteConfig.authorUrl],
     },
     {
       '@type': 'SoftwareApplication',
@@ -53,6 +55,7 @@ const jsonLd = {
       url: `${siteConfig.siteUrl}/`,
       image: logoUrl,
       downloadUrl: siteConfig.appStoreUrl,
+      isAccessibleForFree: true,
       offers: {
         '@type': 'Offer',
         url: siteConfig.appStoreUrl,
@@ -79,13 +82,10 @@ const jsonLd = {
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/brand/icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..700;1,400..700&family=Syne:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="theme-color" content="#111111" />
+    <Font cssVariable="--font-figtree" preload />
+    <Font cssVariable="--font-syne" preload={[{ weight: '600', style: 'normal' }]} />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f4f5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#111111" />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="ru_RU" />
     <meta property="og:url" content={canonical} />

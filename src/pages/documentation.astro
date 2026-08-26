@@ -15,7 +15,7 @@ import { siteConfig } from '@/config/site'
     title="Документация"
     lead="Коротко: разреши Accessibility, жми привычный ⌘Tab, целишься по сетке. Ниже - разбор настроек."
   >
-    <nav class="rounded-2xl border border-line bg-white/2 px-4 py-4" aria-label="Содержание">
+    <nav class="rounded-2xl border border-line bg-fill px-4 py-4" aria-label="Содержание">
       <a class="block py-0.5 text-mute hover:text-ink" href="#start">Старт</a>
       <a class="block py-0.5 text-mute hover:text-ink" href="#accessibility">Accessibility</a>
       <a class="block py-0.5 text-mute hover:text-ink" href="#switcher">Переключение</a>
@@ -37,8 +37,8 @@ import { siteConfig } from '@/config/site'
         <li>Открой {siteConfig.name} и разреши Accessibility.</li>
         <li>
           Нажми
-          <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
-          <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>
+          <kbd>⌘</kbd>
+          <kbd>Tab</kbd>
           и проверь, что сетка появилась.
         </li>
       </ul>
@@ -64,9 +64,9 @@ import { siteConfig } from '@/config/site'
       <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Переключение</h2>
       <p>
         Удерживай
-        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
+        <kbd>⌘</kbd>
         и жми
-        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>:
+        <kbd>Tab</kbd>:
         выбор бежит по сетке. Стрелки тоже работают. Отпусти ⌘ - выбранное приложение выйдет вперёд.
       </p>
       <p class="mt-3">
@@ -83,7 +83,7 @@ import { siteConfig } from '@/config/site'
         В настройках открой блок «Сетка приложений». Там живой превью: крутишь параметры,
         сетка рядом меняется.
       </p>
-      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Размер сетки</h3>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-ink">Размер сетки</h3>
       <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Иконок в ряд: от 3 до 12.</li>
         <li>Максимум рядов: от 1 до 12.</li>
@@ -92,12 +92,12 @@ import { siteConfig } from '@/config/site'
         Чем больше приложений открыто, тем сильнее чувствуется разница между «полоской»
         и нормальной сеткой.
       </p>
-      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Иконки и отступы</h3>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-ink">Иконки и отступы</h3>
       <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Размер иконок: слайдер от S до XL.</li>
         <li>Отступы между ячейками: от плотнее к свободнее.</li>
       </ul>
-      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-neutral-200">Дополнительно</h3>
+      <h3 class="mt-5 mb-2 text-[15px] font-semibold text-ink">Дополнительно</h3>
       <ul class="mt-3 list-disc space-y-1.5 pl-5">
         <li>Показывать иконки приложений. Выключишь - останутся только окна-плейсхолдеры.</li>
         <li>
@@ -111,8 +111,8 @@ import { siteConfig } from '@/config/site'
       <h2 class="mb-3 font-display text-lg font-semibold tracking-tight text-ink">Горячие клавиши</h2>
       <p>
         По умолчанию это
-        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">⌘</kbd>
-        <kbd class="inline-block rounded-md border border-white/12 bg-white/6 px-1.5 py-0.5 text-xs text-neutral-100">Tab</kbd>.
+        <kbd>⌘</kbd>
+        <kbd>Tab</kbd>.
         Хочешь другое сочетание - открой «Горячие клавиши», кликни в поле и нажми своё.
       </p>
       <p class="mt-3">

@@ -5,20 +5,17 @@ import Screenshot from '@/components/Screenshot.astro'
 <section class="cv-auto mt-16 px-4 md:mt-20 lg:mt-28">
   <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
     <div>
-      <h2 class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-white lg:text-[28px]">
-        Светлая и тёмная тема. Как привык в macOS.
+      <h2 class="font-display text-[20px] font-semibold leading-snug tracking-tight text-balance text-ink lg:text-[28px]">
+        Светлая и тёмная как у системы
       </h2>
       <p class="mt-4 text-sm text-pretty text-mute lg:text-base">
-        Внешний вид следует системе. Сетку и хоткеи крутишь сам: меньше суеты, быстрее попадаешь
-        куда нужно.
+        Сам тему не выбираешь. macOS светлая, и это окно тоже.
       </p>
     </div>
     <Screenshot
-      lightSrc="/screenshots/settings/light.png"
-      darkSrc="/screenshots/settings/dark.png"
+      name="settings"
       alt="Окно настроек mr.tabs в теме системы"
-      width={2024}
-      height={1568}
+      sizes="(min-width: 1024px) 28rem, 92vw"
       class="w-full"
     />
   </div>

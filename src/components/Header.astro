@@ -13,7 +13,7 @@ import AppleIcon from '@/components/AppleIcon.astro'
       class="size-8 rounded-[9px] shadow-[0_8px_20px_rgb(124_92_250/0.35)]"
       draggable="false"
     />
-    <span class="font-display text-[15px] font-semibold tracking-tight text-ink transition-colors group-hover:text-white">
+    <span class="font-display text-[15px] font-semibold tracking-tight text-ink transition-colors group-hover:text-brand-soft">
       {siteConfig.name}
     </span>
   </a>
@@ -22,13 +22,13 @@ import AppleIcon from '@/components/AppleIcon.astro'
     <nav class="hidden items-center gap-1 sm:flex" aria-label="Основная">
       <a
         href={siteConfig.paths.documentation}
-        class="rounded-full px-3 py-2 text-sm text-mute transition-colors hover:text-white"
+        class="rounded-full px-3 py-2 text-sm text-mute transition-colors hover:text-ink"
       >
         Документация
       </a>
       <a
         href={siteConfig.paths.privacy}
-        class="rounded-full px-3 py-2 text-sm text-mute transition-colors hover:text-white"
+        class="rounded-full px-3 py-2 text-sm text-mute transition-colors hover:text-ink"
       >
         Конфиденциальность
       </a>
@@ -36,7 +36,7 @@ import AppleIcon from '@/components/AppleIcon.astro'
 
     <a
       href={siteConfig.appStoreUrl}
-      class="inline-flex h-8 items-center gap-1.5 rounded-full bg-neutral-700 px-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+      class="inline-flex h-8 items-center gap-1.5 rounded-full bg-chip px-3 text-sm font-medium text-chip-ink transition-colors hover:bg-chip-hover"
     >
       <AppleIcon class="-mt-0.5 h-3.5 w-auto shrink-0 fill-current" />
       App Store

@@ -1,79 +1,85 @@
 ---
-import { publicAssetExists } from '@/utils/public-asset'
+import { getImage } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+import { screenshots, type ScreenshotName } from '@/assets/screenshots'
 
 type Props = {
-  src?: string
-  lightSrc?: string
-  darkSrc?: string
+  name: ScreenshotName
   alt: string
   class?: string
   loading?: 'eager' | 'lazy'
   fetchpriority?: 'high' | 'low' | 'auto'
-  width?: number
-  height?: number
+  sizes?: string
 }
 
 const {
-  src,
-  lightSrc,
-  darkSrc,
+  name,
   alt,
   class: className = '',
   loading = 'lazy',
   fetchpriority = 'auto',
-  width,
-  height,
+  sizes = '(min-width: 1024px) 42rem, 92vw',
 } = Astro.props
 
-const darkPath = darkSrc ?? src
-const lightPath = lightSrc
-const hasDark = publicAssetExists(darkPath)
-const hasLight = publicAssetExists(lightPath)
-const fallbackPath = hasDark ? darkPath : hasLight ? lightPath : undefined
+const WIDTHS = [720, 1080, 1440]
+const pair = screenshots[name]
+
+const optimize = (src: ImageMetadata, format: 'avif' | 'webp' | 'png') =>
+  getImage({
+    src,
+    format,
+    widths: WIDTHS,
+    sizes,
+    quality: 80,
+  })
+
+const [lightAvif, lightWebp, darkAvif, darkWebp, darkPng] = await Promise.all([
+  optimize(pair.light, 'avif'),
+  optimize(pair.light, 'webp'),
+  optimize(pair.dark, 'avif'),
+  optimize(pair.dark, 'webp'),
+  optimize(pair.dark, 'png'),
+])
+
 const imageClass = ['h-auto w-full bg-transparent object-contain', className]
 ---
 
-{
-  fallbackPath ? (
-    hasLight && hasDark ? (
-      <picture>
-        <source media="(prefers-color-scheme: light)" srcset={lightPath} />
-        <source media="(prefers-color-scheme: dark)" srcset={darkPath} />
-        <img
-          src={fallbackPath}
-          alt={alt}
-          width={width}
-          height={height}
-          draggable="false"
-          loading={loading}
-          fetchpriority={fetchpriority}
-          decoding="async"
-          class:list={imageClass}
-        />
-      </picture>
-    ) : (
-      <img
-        src={fallbackPath}
-        alt={alt}
-        width={width}
-        height={height}
-        draggable="false"
-        loading={loading}
-        fetchpriority={fetchpriority}
-        decoding="async"
-        class:list={imageClass}
-      />
-    )
-  ) : (
-    <div
-      class:list={[
-        'flex aspect-16/10 w-full items-center justify-center rounded-2xl border border-dashed border-white/10 bg-white/2',
-        className,
-      ]}
-      role="img"
-      aria-label={alt}
-    >
-      <span class="text-xs text-mute">{lightSrc ?? darkSrc ?? src}</span>
-    </div>
-  )
-}
+<picture>
+  <source
+    media="(prefers-color-scheme: light)"
+    type="image/avif"
+    srcset={lightAvif.srcSet.attribute}
+    sizes={sizes}
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    type="image/webp"
+    srcset={lightWebp.srcSet.attribute}
+    sizes={sizes}
+  />
+  <source
+    media="(prefers-color-scheme: dark)"
+    type="image/avif"
+    srcset={darkAvif.srcSet.attribute}
+    sizes={sizes}
+  />
+  <source
+    media="(prefers-color-scheme: dark)"
+    type="image/webp"
+    srcset={darkWebp.srcSet.attribute}
+    sizes={sizes}
+  />
+  <img
+    src={darkPng.src}
+    srcset={darkPng.srcSet.attribute}
+    sizes={sizes}
+    alt={alt}
+    width={darkPng.attributes.width}
+    height={darkPng.attributes.height}
+    draggable="false"
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+    class:list={imageClass}
+  />
+</picture>

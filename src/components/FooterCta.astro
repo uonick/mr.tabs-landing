@@ -1,9 +1,11 @@
 ---
-import { siteConfig } from '@/config/site'
-import AppleIcon from '@/components/AppleIcon.astro'
+import { siteConfig } from "@/config/site";
+import AppleIcon from "@/components/AppleIcon.astro";
 ---
 
-<section class="cv-auto relative isolate mt-16 flex min-h-112 items-center justify-center px-4 py-20 md:mt-20 lg:mt-28">
+<section
+  class="cv-auto relative isolate mt-16 flex min-h-112 items-center justify-center px-4 py-20 md:mt-20 lg:mt-28"
+>
   <div
     aria-hidden="true"
     class="pointer-events-none absolute left-1/2 top-1/2 -z-10 aspect-square w-[min(698px,100vw-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[80px]"
@@ -20,13 +22,17 @@ import AppleIcon from '@/components/AppleIcon.astro'
       class="size-16 rounded-[18px] shadow-[0_16px_40px_rgb(124_92_250/0.4)] sm:size-20 sm:rounded-[22px]"
       draggable="false"
     />
-    <h2 class="font-display mt-9 text-2xl font-semibold leading-tight tracking-tight text-balance text-white lg:text-[28px]">
-      Видишь каждое приложение.<br class="hidden sm:block" /> Переключаешься в одно касание.
+    <h2
+      class="font-display mt-9 text-2xl font-semibold leading-tight tracking-tight text-balance text-ink lg:text-[28px]"
+    >
+      Поставь и жми ⌘Tab как раньше
     </h2>
-    <p class="mt-4 text-sm text-mute">Полностью бесплатно · {siteConfig.tagline}</p>
+    <p class="mt-4 text-sm text-mute">
+      Бесплатно. Без подпискок и покупок. Навсегда.
+    </p>
     <a
       href={siteConfig.appStoreUrl}
-      class="mt-7 inline-flex h-12 items-center gap-2 rounded-full bg-neutral-200 px-6 text-base font-semibold text-neutral-950 transition-colors hover:bg-neutral-100 sm:h-14 sm:px-7 sm:text-lg"
+      class="mt-7 inline-flex h-12 items-center gap-2 rounded-full bg-cta px-6 text-base font-semibold text-cta-ink transition-colors hover:bg-cta-hover sm:h-14 sm:px-7 sm:text-lg"
     >
       <AppleIcon />
       Скачать бесплатно
