@@ -43,7 +43,7 @@ const jsonLd = {
         width: 512,
         height: 512,
       },
-      sameAs: [siteConfig.appStoreUrl, siteConfig.authorUrl],
+      sameAs: [siteConfig.authorUrl],
     },
     {
       '@type': 'SoftwareApplication',
@@ -54,11 +54,12 @@ const jsonLd = {
       description: siteConfig.description,
       url: `${siteConfig.siteUrl}/`,
       image: logoUrl,
-      downloadUrl: siteConfig.appStoreUrl,
+      softwareVersion: siteConfig.version,
+      downloadUrl: `${siteConfig.siteUrl}${siteConfig.downloadUrl}`,
       isAccessibleForFree: true,
       offers: {
         '@type': 'Offer',
-        url: siteConfig.appStoreUrl,
+        url: `${siteConfig.siteUrl}${siteConfig.downloadUrl}`,
         price: '0',
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',

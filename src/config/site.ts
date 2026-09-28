@@ -1,3 +1,5 @@
+import release from "./release.json";
+
 export const siteConfig = {
   name: "mr.tabs",
   tagline: "Замена ⌘Tab на macOS",
@@ -9,7 +11,8 @@ export const siteConfig = {
   description:
     "Замена стандартного ⌘Tab на macOS. Сетка всех запущенных приложений вместо системной полоски. Бесплатно, без аккаунта.",
   siteUrl: "https://mrtabs.ru",
-  appStoreUrl: "https://apps.apple.com/us/app/mr-tabs/id6801542683",
+  version: release.version,
+  downloadUrl: `/downloads/${release.file}`,
   supportUrl: "https://uonick.com/#contact",
   author: "uonick",
   authorUrl: "https://uonick.com",

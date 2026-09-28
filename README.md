@@ -7,5 +7,5 @@
 </p>
 
 Сайт: [mrtabs.ru](https://mrtabs.ru)  
-App Store: [скачать](https://apps.apple.com/us/app/mr-tabs/id6801542683)
+Скачать: [mrtabs.ru](https://mrtabs.ru)
 

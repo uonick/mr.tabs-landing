@@ -33,7 +33,10 @@ import { siteConfig } from '@/config/site'
         ты видишь сетку запущенных приложений.
       </p>
       <ul class="mt-3 list-disc space-y-1.5 pl-5">
-        <li>Установи приложение из App Store.</li>
+        <li>
+          <a href={siteConfig.downloadUrl} download>Скачай DMG</a>, открой его и перетащи {siteConfig.name} в
+          «Программы».
+        </li>
         <li>Открой {siteConfig.name} и разреши Accessibility.</li>
         <li>
           Нажми
