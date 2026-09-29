@@ -12,7 +12,7 @@ export const siteConfig = {
     "Замена стандартного ⌘Tab на macOS. Сетка всех запущенных приложений вместо системной полоски. Бесплатно, без аккаунта.",
   siteUrl: "https://mrtabs.ru",
   version: release.version,
-  downloadUrl: `/downloads/${release.file}`,
+  downloadUrl: `https://github.com/uonick/mr.tabs-landing/releases/download/${release.version}/${release.file}`,
   supportUrl: "https://uonick.com/#contact",
   author: "uonick",
   authorUrl: "https://uonick.com",

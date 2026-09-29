@@ -55,11 +55,11 @@ const jsonLd = {
       url: `${siteConfig.siteUrl}/`,
       image: logoUrl,
       softwareVersion: siteConfig.version,
-      downloadUrl: `${siteConfig.siteUrl}${siteConfig.downloadUrl}`,
+      downloadUrl: siteConfig.downloadUrl,
       isAccessibleForFree: true,
       offers: {
         '@type': 'Offer',
-        url: `${siteConfig.siteUrl}${siteConfig.downloadUrl}`,
+        url: siteConfig.downloadUrl,
         price: '0',
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',
